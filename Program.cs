@@ -12,7 +12,9 @@ public class Program
 
         User user = new("juan1@gmail.com","passwd");
 
-        uManager.LogIn(user);
+        User session = uManager.LogIn(user);
+        uManager.Delete(session);
+
     }
 
 }

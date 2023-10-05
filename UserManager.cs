@@ -119,16 +119,45 @@ namespace GalagaConC_
                         Console.WriteLine("Contraseña incorrecta");
 
                     }
-                    else
-                    {
-                        Console.WriteLine("Email incorrecto");
-                    }
+                    
 
                 }
             }
             return session;
         }
-    //public void LogOut(User user) { }
-    //public void Delete(User user) { }
-}
+        public User LogOut(User session) 
+        {
+            session = null;
+            return session;
+        }
+        public void Delete(User session) 
+        {
+            string path = "C:\\Users\\cehernando\\Desktop\\userTable.txt";
+
+            List<User> existingUsers = ReadUserTable();
+            if (existingUsers != null) 
+            {
+                for (int i = 0; i < existingUsers.Count; i++)
+                {
+                    if (session.Email == existingUsers[i].Email)
+                    {
+                        existingUsers.RemoveAt(i);
+                        using (StreamWriter sw = new StreamWriter(path, false))
+                        {
+                            foreach(User user in existingUsers)
+                            {
+                                sw.WriteLine($"{user.Name} {user.PhoneNumber} {user.Email} {user.Password}");
+
+
+                            }
+                        }
+                        break;
+                    }
+                    
+
+                }
+            }
+
+        }
+    }
 }
