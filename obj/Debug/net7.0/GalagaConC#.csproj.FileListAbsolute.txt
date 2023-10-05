@@ -12,3 +12,17 @@ C:\Users\cehernando\Documents\Entregas\ProyectoFinal\GalagaConC#\obj\Debug\net7.
 C:\Users\cehernando\Documents\Entregas\ProyectoFinal\GalagaConC#\obj\Debug\net7.0\GalagaConC#.pdb
 C:\Users\cehernando\Documents\Entregas\ProyectoFinal\GalagaConC#\obj\Debug\net7.0\GalagaConC#.genruntimeconfig.cache
 C:\Users\cehernando\Documents\Entregas\ProyectoFinal\GalagaConC#\obj\Debug\net7.0\ref\GalagaConC#.dll
+C:\Users\cehernando\Documents\Entregas\GalagaConCSharp\bin\Debug\net7.0\GalagaConC#.exe
+C:\Users\cehernando\Documents\Entregas\GalagaConCSharp\bin\Debug\net7.0\GalagaConC#.deps.json
+C:\Users\cehernando\Documents\Entregas\GalagaConCSharp\bin\Debug\net7.0\GalagaConC#.runtimeconfig.json
+C:\Users\cehernando\Documents\Entregas\GalagaConCSharp\bin\Debug\net7.0\GalagaConC#.dll
+C:\Users\cehernando\Documents\Entregas\GalagaConCSharp\bin\Debug\net7.0\GalagaConC#.pdb
+C:\Users\cehernando\Documents\Entregas\GalagaConCSharp\obj\Debug\net7.0\GalagaConC#.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\cehernando\Documents\Entregas\GalagaConCSharp\obj\Debug\net7.0\GalagaConC#.AssemblyInfoInputs.cache
+C:\Users\cehernando\Documents\Entregas\GalagaConCSharp\obj\Debug\net7.0\GalagaConC#.AssemblyInfo.cs
+C:\Users\cehernando\Documents\Entregas\GalagaConCSharp\obj\Debug\net7.0\GalagaConC#.csproj.CoreCompileInputs.cache
+C:\Users\cehernando\Documents\Entregas\GalagaConCSharp\obj\Debug\net7.0\GalagaConC#.dll
+C:\Users\cehernando\Documents\Entregas\GalagaConCSharp\obj\Debug\net7.0\refint\GalagaConC#.dll
+C:\Users\cehernando\Documents\Entregas\GalagaConCSharp\obj\Debug\net7.0\GalagaConC#.pdb
+C:\Users\cehernando\Documents\Entregas\GalagaConCSharp\obj\Debug\net7.0\GalagaConC#.genruntimeconfig.cache
+C:\Users\cehernando\Documents\Entregas\GalagaConCSharp\obj\Debug\net7.0\ref\GalagaConC#.dll

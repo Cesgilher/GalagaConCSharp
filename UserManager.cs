@@ -11,75 +11,83 @@ namespace GalagaConC_
     {
 
 
-        public void ReadUserTable()
+        public List<User> ReadUserTable()
         {
             string path = @"C:\Users\cehernando\Desktop\userTable.txt";
+            
+            List<User> listOfUsers = new List<User>();
 
             if (File.Exists(path))
             {
-                int lineCount = File.ReadLines(path).Count();
-
-                User[] listOfUsers = new User[lineCount];
-
-                using (StreamReader sr = File.OpenText(path))
+                try
                 {
-
-                    for (int i = 0; i < lineCount; i++)
+                    using (StreamReader sr = File.OpenText(path))
                     {
-                        string line = sr.ReadLine();
-                        string[] parts = line.Split(' ');
-
-
-                        if (parts.Length == 4)
+                        string line;
+                        while ((line = sr.ReadLine()) != null)
                         {
-                            User u = new User(parts[0], Convert.ToInt16(parts[1]), parts[2], parts[3]);
+                            string[] parts = line.Split(' ');
 
-                            listOfUsers[i] = u;
+                            if (parts.Length == 4)
+                            {
+                                User u = new User(parts[0], Convert.ToInt16(parts[1]), parts[2], parts[3]);
+                                listOfUsers.Add(u);
+                            }
+                            else
+                            {
+                                Console.WriteLine($"Error en línea: {line}. Datos incompletos.");
+                            }
                         }
-
                     }
+
+                    return listOfUsers;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error al leer el archivo: {ex.Message}");
+                    return null;
                 }
 
             }
+            else
+            {
+                return null;
+            }
+
 
             
-
-
         }
         public void Register(User user)
         {
             string path = "C:\\Users\\cehernando\\Desktop\\userTable.txt";
-
             if (!File.Exists(path))
             {
                 using (FileStream fs = File.Create(path));
-                return;
             }
+            List<User> existingUsers = ReadUserTable();
+            if (existingUsers != null)
+            { 
+                bool userExists = existingUsers.Any(u => u.Email == user.Email);
 
-            using (StreamReader sr = File.OpenText(path))
-            {
-
-                while (!sr.EndOfStream)
+                if (userExists)
                 {
-                    string line = sr.ReadLine();
-                    string[] parts = line.Split(' ');
-
-
-                    if (parts.Length == 4)
+                    Console.WriteLine("Ese usuario ya existe");
+                }
+                else
+                {
+                    using (StreamWriter sw = File.AppendText(path))
                     {
-                        User u = new User(parts[0], Convert.ToInt16(parts[1]), parts[2], parts[3]);
-
-                        if (user.Email != u.Email) 
-                        
-                        {
-                        
-                        }
-                        ;
+                        // Escribir el nuevo usuario en una nueva línea del archivo
+                        sw.WriteLine($"{user.Name} {user.PhoneNumber} {user.Email} {user.Password}");
                     }
 
+                    Console.WriteLine("Usuario registrado con éxito.");
                 }
+
+                
             }
 
+            
 
 
 
