@@ -57,8 +57,9 @@ namespace GalagaConC_
 
             
         }
-        public void Register(User user)
+        public User Register(User user)
         {
+            User session = null;
             string path = "C:\\Users\\cehernando\\Desktop\\userTable.txt";
             if (!File.Exists(path))
             {
@@ -82,21 +83,86 @@ namespace GalagaConC_
                     }
 
                     Console.WriteLine("Usuario registrado con éxito.");
+                    session = user;
                 }
 
                 
             }
-
-            
-
-
-
-
-
+            return session;
 
 
         }
-        //public void Edit(User user) {} 
+        public User Edit(User session) 
+        {
+            List<User> existingUsers = ReadUserTable();
+            Console.WriteLine("que quiere cambiar");
+            Console.WriteLine("1) nombre de usuario");
+            Console.WriteLine("2) telefono");
+            Console.WriteLine("3) contraseña");
+            int menu = Convert.ToInt32(Console.ReadLine());
+
+            switch (menu)
+            {
+                case 1:
+                    Console.WriteLine("introduzca el nuevo nombre de usuario");
+                    string userName = Console.ReadLine();
+                    bool usernameExists = existingUsers.Any(u => u.Name == userName);
+                    if (!usernameExists)
+                    {
+                        session.Name = userName;
+
+                    }
+                    else
+                    {
+                        Console.WriteLine("Ese nombre de usuario no está disponible");
+                    }
+
+
+                    break;
+
+                case 2:
+                    Console.WriteLine("introduzca el nuevo numero de telefono");
+                    string userPhone = Console.ReadLine();
+                    bool userPhoneExists = existingUsers.Any(u => u.Name == user);
+                    if (!usernameExists)
+                    {
+                        session.Name = username;
+
+                    }
+                    else
+                    {
+                        Console.WriteLine("Ese nombre de usuario no está disponible");
+                    }
+
+                case 3:
+                    break;
+            }
+            if (existingUsers != null)
+            {
+                for (int i = 0; i < existingUsers.Count; i++)
+                {
+                    if (session.Email == existingUsers[i].Email)
+                    {
+                        existingUsers.RemoveAt(i);
+                        using (StreamWriter sw = new StreamWriter(path, false))
+                        {
+                            foreach (User user in existingUsers)
+                            {
+                                sw.WriteLine($"{user.Name} {user.PhoneNumber} {user.Email} {user.Password}");
+
+
+                            }
+                        }
+                        session = null;
+                        break;
+                    }
+
+
+                }
+            }
+
+            return session;
+        }
 
 
 
@@ -130,7 +196,7 @@ namespace GalagaConC_
             session = null;
             return session;
         }
-        public void Delete(User session) 
+        public User Delete(User session) 
         {
             string path = "C:\\Users\\cehernando\\Desktop\\userTable.txt";
 
@@ -151,12 +217,15 @@ namespace GalagaConC_
 
                             }
                         }
+                        session = null;
                         break;
                     }
                     
 
                 }
             }
+            return session;
+
 
         }
     }
