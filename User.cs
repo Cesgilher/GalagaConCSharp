@@ -14,10 +14,16 @@ namespace GalagaConC_
         private string password;
 
 
-        public User(string name, int phoneNumbre, string email, string password) 
-        { 
+
+        public User(string name, int phoneNumbre, string email, string password)
+        {
             this.name = name;
             this.phoneNumber = phoneNumbre;
+            this.email = email;
+            this.password = password;
+        }
+        public User(string email, string password)
+        {
             this.email = email;
             this.password = password;
         }

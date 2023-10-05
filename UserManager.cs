@@ -96,9 +96,39 @@ namespace GalagaConC_
 
 
         }
-        //public void Edit(User user){}
-        //public void LogIn(User user) {}
-        //public void LogOut(User user) { }
-        //public void Delete(User user) { }
-    }
+        //public void Edit(User user) {} 
+
+
+
+        public User LogIn(User user)
+        {
+            User session = null;
+            List<User> existingUsers = ReadUserTable();
+            if (existingUsers != null)
+            {
+                for (int i = 0; i < existingUsers.Count; i++)
+                {
+                    if (user.Email== existingUsers[i].Email && user.Password == existingUsers[i].Password)
+                    {
+                        session = existingUsers[i];
+                        Console.WriteLine("Se ha iniciado sesion correctamente");
+                        break;
+                    }
+                    else if (user.Email == existingUsers[i].Email)
+                    {
+                        Console.WriteLine("Contraseña incorrecta");
+
+                    }
+                    else
+                    {
+                        Console.WriteLine("Email incorrecto");
+                    }
+
+                }
+            }
+            return session;
+        }
+    //public void LogOut(User user) { }
+    //public void Delete(User user) { }
+}
 }

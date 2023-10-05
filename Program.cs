@@ -10,9 +10,9 @@ public class Program
     {
         UserManager uManager = new();
 
-        User user = new("juan",112,"juan1@gmail.com","passwd");
+        User user = new("juan1@gmail.com","passwd");
 
-        uManager.Register(user);
+        uManager.LogIn(user);
     }
 
 }
