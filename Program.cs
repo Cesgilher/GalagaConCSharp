@@ -11,7 +11,8 @@ public class Program
         UserManager uManager = new();
 
         User user = new("juan1@gmail.com","passwd");
-
+        uManager.Register(user);
+        uManager.SafeToUserFile();
         User session = uManager.LogIn(user);
         uManager.Delete(session);
 

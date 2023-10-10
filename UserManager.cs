@@ -9,14 +9,11 @@ namespace GalagaConC_
 {
     public class UserManager
     {
+        List<User> users = new List<User>();
+        private string path = @"C:\Users\cehernando\Desktop\userTable.txt";
 
-
-        public List<User> ReadUserTable()
-        {
-            string path = @"C:\Users\cehernando\Desktop\userTable.txt";
-            
-            List<User> listOfUsers = new List<User>();
-
+        public List<User> ReadUserFile()
+        {             
             if (File.Exists(path))
             {
                 try
@@ -31,7 +28,7 @@ namespace GalagaConC_
                             if (parts.Length == 4)
                             {
                                 User u = new User(parts[0], Convert.ToInt16(parts[1]), parts[2], parts[3]);
-                                listOfUsers.Add(u);
+                                users.Add(u);
                             }
                             else
                             {
@@ -40,7 +37,7 @@ namespace GalagaConC_
                         }
                     }
 
-                    return listOfUsers;
+                    return users;
                 }
                 catch (Exception ex)
                 {
@@ -57,18 +54,45 @@ namespace GalagaConC_
 
             
         }
+        public void SafeToUserFile() 
+        {
+            if (!File.Exists(path))
+            {
+                using (FileStream fs = File.Create(path)) { }
+            }
+
+            try
+            {
+                using (StreamWriter sw = new StreamWriter(path))
+                {
+                    
+                    foreach (User user in users)
+                    {
+                        sw.WriteLine($"{user.Name} {user.PhoneNumber} {user.Email} {user.Password}");
+                    }
+                }
+
+
+            }
+
+
+
+
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al guardar los datos en el archivo: {ex.Message}");
+
+            }
+
+        }
+
         public User Register(User user)
         {
             User session = null;
-            string path = "C:\\Users\\cehernando\\Desktop\\userTable.txt";
-            if (!File.Exists(path))
-            {
-                using (FileStream fs = File.Create(path));
-            }
-            List<User> existingUsers = ReadUserTable();
-            if (existingUsers != null)
+            
+            if (users != null)
             { 
-                bool userExists = existingUsers.Any(u => u.Email == user.Email);
+                bool userExists = users.Any(u => u.Email == user.Email);
 
                 if (userExists)
                 {
@@ -76,14 +100,10 @@ namespace GalagaConC_
                 }
                 else
                 {
-                    using (StreamWriter sw = File.AppendText(path))
-                    {
-                        // Escribir el nuevo usuario en una nueva línea del archivo
-                        sw.WriteLine($"{user.Name} {user.PhoneNumber} {user.Email} {user.Password}");
-                    }
-
-                    Console.WriteLine("Usuario registrado con éxito.");
+                    users.Add(user);
                     session = user;
+                    Console.WriteLine("Usuario registrado con éxito.");
+
                 }
 
                 
@@ -92,95 +112,85 @@ namespace GalagaConC_
 
 
         }
-        public User Edit(User session) 
+        public User EditName(User session, string newName) 
         {
-            List<User> existingUsers = ReadUserTable();
-            Console.WriteLine("que quiere cambiar");
-            Console.WriteLine("1) nombre de usuario");
-            Console.WriteLine("2) telefono");
-            Console.WriteLine("3) contraseña");
-            int menu = Convert.ToInt32(Console.ReadLine());
-
-            switch (menu)
+          
+            bool usernameExists = users.Any(u => u.Name == newName);
+            if (!usernameExists)
             {
-                case 1:
-                    Console.WriteLine("introduzca el nuevo nombre de usuario");
-                    string userName = Console.ReadLine();
-                    bool usernameExists = existingUsers.Any(u => u.Name == userName);
-                    if (!usernameExists)
-                    {
-                        session.Name = userName;
+                int index = users.FindIndex(u => u.Email == session.Email);
 
-                    }
-                    else
-                    {
-                        Console.WriteLine("Ese nombre de usuario no está disponible");
-                    }
-
-
-                    break;
-
-                case 2:
-                    Console.WriteLine("introduzca el nuevo numero de telefono");
-                    string userPhone = Console.ReadLine();
-                    bool userPhoneExists = existingUsers.Any(u => u.Name == user);
-                    if (!usernameExists)
-                    {
-                        session.Name = username;
-
-                    }
-                    else
-                    {
-                        Console.WriteLine("Ese nombre de usuario no está disponible");
-                    }
-
-                case 3:
-                    break;
-            }
-            if (existingUsers != null)
-            {
-                for (int i = 0; i < existingUsers.Count; i++)
+                if (index != -1)
                 {
-                    if (session.Email == existingUsers[i].Email)
-                    {
-                        existingUsers.RemoveAt(i);
-                        using (StreamWriter sw = new StreamWriter(path, false))
-                        {
-                            foreach (User user in existingUsers)
-                            {
-                                sw.WriteLine($"{user.Name} {user.PhoneNumber} {user.Email} {user.Password}");
-
-
-                            }
-                        }
-                        session = null;
-                        break;
-                    }
-
-
+                    users[index].Name = newName;
                 }
-            }
 
+                session.Name = newName;
+
+            }
+            else
+            {
+                Console.WriteLine("Ese nombre de usuario no está disponible");
+            }
             return session;
         }
+        public User EditPhone(User session, int newPhone) 
+        {
+            bool phoneExists = users.Any(u => u.PhoneNumber == newPhone);
+            if (!phoneExists)
+            {
+                int index = users.FindIndex(u => u.Email == session.Email);
 
+                if (index != -1)
+                {
+                    users[index].PhoneNumber = newPhone;
+                }
 
+                session.PhoneNumber = newPhone;
 
+            }
+            else
+            {
+                Console.WriteLine("Ese numero ya está asignado a otra cuenta");
+            }
+            return session;
+
+        }
+        public User EditPassword(User session, string newPassword)
+        {
+            if (session.Password != newPassword)
+            {
+                int index = users.FindIndex(u => u.Email == session.Email);
+
+                if (index != -1)
+                {
+                    users[index].Password = newPassword;
+                }
+
+                session.Password = newPassword;
+
+            }
+            else
+            {
+                Console.WriteLine("Esa contraseña es identica a la actual");
+            }
+            return session;
+
+        }
         public User LogIn(User user)
         {
             User session = null;
-            List<User> existingUsers = ReadUserTable();
-            if (existingUsers != null)
+            if (users != null)
             {
-                for (int i = 0; i < existingUsers.Count; i++)
+                for (int i = 0; i < users.Count; i++)
                 {
-                    if (user.Email== existingUsers[i].Email && user.Password == existingUsers[i].Password)
+                    if (user.Email== users[i].Email && user.Password == users[i].Password)
                     {
-                        session = existingUsers[i];
+                        session = users[i];
                         Console.WriteLine("Se ha iniciado sesion correctamente");
                         break;
                     }
-                    else if (user.Email == existingUsers[i].Email)
+                    else if (user.Email == users[i].Email)
                     {
                         Console.WriteLine("Contraseña incorrecta");
 
@@ -198,25 +208,14 @@ namespace GalagaConC_
         }
         public User Delete(User session) 
         {
-            string path = "C:\\Users\\cehernando\\Desktop\\userTable.txt";
 
-            List<User> existingUsers = ReadUserTable();
-            if (existingUsers != null) 
+            if (users != null) 
             {
-                for (int i = 0; i < existingUsers.Count; i++)
+                for (int i = 0; i < users.Count; i++)
                 {
-                    if (session.Email == existingUsers[i].Email)
+                    if (session.Email == users[i].Email)
                     {
-                        existingUsers.RemoveAt(i);
-                        using (StreamWriter sw = new StreamWriter(path, false))
-                        {
-                            foreach(User user in existingUsers)
-                            {
-                                sw.WriteLine($"{user.Name} {user.PhoneNumber} {user.Email} {user.Password}");
-
-
-                            }
-                        }
+                        users.RemoveAt(i);
                         session = null;
                         break;
                     }
@@ -228,5 +227,8 @@ namespace GalagaConC_
 
 
         }
+
+
     }
+
 }
