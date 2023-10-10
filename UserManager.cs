@@ -112,71 +112,45 @@ namespace GalagaConC_
 
 
         }
-        public User EditName(User session, string newName) 
+        
+        public User EditUserField<T>(User session, T newValue, Func<User, T> getField, Action<User, T> setField, string errorMessage)
         {
-          
-            bool usernameExists = users.Any(u => u.Name == newName);
-            if (!usernameExists)
+            bool fieldExists = users.Any(u => getField(u).Equals(newValue));
+
+            if (!fieldExists)
             {
                 int index = users.FindIndex(u => u.Email == session.Email);
 
                 if (index != -1)
                 {
-                    users[index].Name = newName;
+                    setField(users[index], newValue);
                 }
 
-                session.Name = newName;
-
+                setField(session, newValue);
             }
             else
             {
-                Console.WriteLine("Ese nombre de usuario no está disponible");
+                Console.WriteLine(errorMessage);
             }
+
             return session;
         }
-        public User EditPhone(User session, int newPhone) 
+
+        public User EditName(User session, string newName)
         {
-            bool phoneExists = users.Any(u => u.PhoneNumber == newPhone);
-            if (!phoneExists)
-            {
-                int index = users.FindIndex(u => u.Email == session.Email);
-
-                if (index != -1)
-                {
-                    users[index].PhoneNumber = newPhone;
-                }
-
-                session.PhoneNumber = newPhone;
-
-            }
-            else
-            {
-                Console.WriteLine("Ese numero ya está asignado a otra cuenta");
-            }
-            return session;
-
+            return EditUserField(session, newName, u => u.Name, (u, value) => u.Name = value, "Ese nombre de usuario no está disponible");
         }
+
+        public User EditPhone(User session, int newPhone)
+        {
+            return EditUserField(session, newPhone, u => u.PhoneNumber, (u, value) => u.PhoneNumber = value, "Ese número ya está asignado a otra cuenta");
+        }
+
         public User EditPassword(User session, string newPassword)
         {
-            if (session.Password != newPassword)
-            {
-                int index = users.FindIndex(u => u.Email == session.Email);
-
-                if (index != -1)
-                {
-                    users[index].Password = newPassword;
-                }
-
-                session.Password = newPassword;
-
-            }
-            else
-            {
-                Console.WriteLine("Esa contraseña es identica a la actual");
-            }
-            return session;
-
+            return EditUserField(session, newPassword, u => u.Password, (u, value) => u.Password = value, "Esa contraseña es idéntica a la actual");
         }
+
         public User LogIn(User user)
         {
             User session = null;
