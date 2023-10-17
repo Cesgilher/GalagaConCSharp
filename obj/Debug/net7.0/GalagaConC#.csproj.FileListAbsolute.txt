@@ -26,3 +26,7 @@ C:\Users\cehernando\Documents\Entregas\GalagaConCSharp\obj\Debug\net7.0\refint\G
 C:\Users\cehernando\Documents\Entregas\GalagaConCSharp\obj\Debug\net7.0\GalagaConC#.pdb
 C:\Users\cehernando\Documents\Entregas\GalagaConCSharp\obj\Debug\net7.0\GalagaConC#.genruntimeconfig.cache
 C:\Users\cehernando\Documents\Entregas\GalagaConCSharp\obj\Debug\net7.0\ref\GalagaConC#.dll
+C:\Users\cesgi\Source\Repos\Cesgilher\GalagaConCSharp\obj\Debug\net7.0\GalagaConC#.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\cesgi\Source\Repos\Cesgilher\GalagaConCSharp\obj\Debug\net7.0\GalagaConC#.AssemblyInfoInputs.cache
+C:\Users\cesgi\Source\Repos\Cesgilher\GalagaConCSharp\obj\Debug\net7.0\GalagaConC#.AssemblyInfo.cs
+C:\Users\cesgi\Source\Repos\Cesgilher\GalagaConCSharp\obj\Debug\net7.0\GalagaConC#.csproj.CoreCompileInputs.cache

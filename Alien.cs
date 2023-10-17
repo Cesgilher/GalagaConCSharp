@@ -8,7 +8,7 @@ namespace GalagaConC_
 {
     public class Alien : Ship
     {
-        public int Health { get; set; };
+        public int Health { get; set; }
 
         public Alien(int id, object render, object hitbox, int[] position, Projectile projectile) : this(id, render, hitbox, position, projectile, 1)
         { }

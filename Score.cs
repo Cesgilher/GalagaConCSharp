@@ -16,5 +16,12 @@ namespace GalagaConC_
         public string User { get => user; set => user = value; }
         public int Level { get => level; set => level = value; }
         public int Points { get => points; set => points = value; }
+
+        public Score(string user, int level, int points)
+        {
+            this.user = user;
+            this.level = level;
+            this.points = points;
+        }
     }
 }

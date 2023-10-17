@@ -9,11 +9,11 @@ namespace GalagaConC_
     public class Board
     {
         private int id;
-        private Alien[] aliens;
+        private List<Alien> aliens = new List<Alien>();
         private PlayerShip playerShip;
 
         public int Id { get => id; set => id = value; }
-        public Alien[] Aliens { get => aliens; set => aliens = value; }
+        public List<Alien> Aliens { get => aliens; set => aliens = value; }
         public PlayerShip PlayerShip { get => playerShip; set => playerShip = value; }
 
 

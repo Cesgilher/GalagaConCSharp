@@ -8,7 +8,7 @@ namespace GalagaConC_
 {
     public class PlayerShip : Ship
     {
-        bool Shield { get; set; };
+        bool Shield { get; set; }
 
         public PlayerShip( int id, object render, object hitbox, int[] position, Projectile projectile) : this(id, render, hitbox, position, projectile, true)
         { }
