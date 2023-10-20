@@ -6,10 +6,13 @@ using System.Threading.Tasks;
 
 namespace GalagaConC_.Models
 {
-    public interface IManager
-    {
-        public void Register(Object item) { }
 
-        public void 
-    }
+
+
+
+
 }
+
+
+    
+

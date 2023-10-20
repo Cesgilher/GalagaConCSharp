@@ -10,45 +10,19 @@ namespace GalagaConC_.Controller
 {
     public class UserManager
     {
-        List<User> users = new List<User>();
-        private string path = @"..\..\..\DB\\userTable.txt";
+        private List<User> users = new List<User>();
+        private DBContext<User> dB = new DBContext<User>();
+
 
         public List<User> GetUsers()
         {
-            //DBContext.GetAll(User)
+            users = dB.GetAll();
+            return users;
         }
         public void SafeToUserFile()
         {
-            if (!File.Exists(path))
-            {
-                using (FileStream fs = File.Create(path)) { }
-            }
-
-            try
-            {
-                using (StreamWriter sw = new StreamWriter(path))
-                {
-
-                    foreach (User user in users)
-                    {
-                        sw.WriteLine($"{user.Name} {user.PhoneNumber} {user.Email} {user.Password}");
-                    }
-                }
-
-
-            }
-
-
-
-
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error al guardar los datos en el archivo: {ex.Message}");
-
-            }
-
+            dB.SaveAll(users);
         }
-
         public User Register(User user)
         {
             User session = null;

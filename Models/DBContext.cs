@@ -5,16 +5,29 @@ using GalagaConC_;
 
 public class DBContext<T> where T : class
 {
-	private readonly string userPath = @"..\..\..\DB\\userTable.txt";
-    private readonly string scorePath = @"..\..\..\DB\\scoreTable.txt";
+    private readonly string path;
 
-    public List<T> GetAll(FilePath filePath) 
+    public DBContext()
+    {
+        if (typeof(T) == typeof(User))
+        {
+            path = @"..\..\..\DB\\userTable.txt";
+        }
+        else if (typeof(T) == typeof(Score))
+        {
+            path = @"..\..\..\DB\\scoreTable.txt";
+        }
+        else
+        {
+            // Manejar otros tipos si es necesario
+            throw new ArgumentException("Tipo no válido");
+        }
+    }
+    
+    public List<T> GetAll()
     {
         List<T> items = new List<T>();
-        string path;
-        if (filePath == FilePath.User) { path = userPath; }
-        else { path = scorePath; }
-
+        
         if (File.Exists(path))
         {
             try
@@ -26,43 +39,41 @@ public class DBContext<T> where T : class
                     {
                         string[] parts = line.Split(' ');
 
-                        if (typeof(T)==typeof(User) && parts.Length == 4)
+                        if (typeof(T) == typeof(User) && parts.Length == 4)
                         {
-                            T item = (T)Activator.CreateInstance(typeof(T),parts[0], Convert.ToInt16(parts[1]), parts[2], parts[3]);
+                            T item = (T)Activator.CreateInstance(typeof(T), parts[0], int.Parse(parts[1]), parts[2], parts[3]);
                             items.Add(item);
                         }
-                        else if (typeof(T)==typeof(Score) && parts.Length == 3)
+                        else if (typeof(T) == typeof(Score) && parts.Length == 3)
                         {
-                            T item = (T)Activator.CreateInstance(typeof(T), parts[0], Convert.ToInt16(parts[1]), parts[2]);
+                            T item = (T)Activator.CreateInstance(typeof(T), parts[0], int.Parse(parts[1]), parts[2]);
                             items.Add(item);
                         }
                         else
                         {
-                                Console.WriteLine($"Error en línea: {line}. Datos incompletos.");
+                            Console.WriteLine($"Error en línea: {line}. Datos incompletos.");
                         }
                     }
                 }
-                
+
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error al leer el archivo: {ex.Message}");                
+                Console.WriteLine($"Error al leer el archivo: {ex.Message}");
             }
         }
-        return items;        
+        return items;
     }
 
-    public void SaveAll(FilePath filePath, List<T> items)
+    public void SaveAll(List<T> items)
     {
-        string path;
-        if (filePath == FilePath.User) { path = userPath; }
-        else { path = scorePath; }
+        
 
         try
         {
             using (StreamWriter sw = File.CreateText(path))
             {
-                foreach (T item in items) 
+                foreach (T item in items)
                 {
                     string line;
                     if (typeof(T) == typeof(User))
@@ -84,13 +95,10 @@ public class DBContext<T> where T : class
                     sw.WriteLine(line);
                 }
             }
+            
         }
-        catch( Exception ex ) { }
+        catch (Exception ex) { }
     }
-
-
-public enum FilePath
-{
-    User,
-    Score
 }
+
+

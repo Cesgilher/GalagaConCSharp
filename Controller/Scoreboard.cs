@@ -10,10 +10,10 @@ namespace GalagaConC_.Controller
     public class Scoreboard
     {
         private List<Score> scores = new List<Score>();
-        private string overlay;
+        private DBContext<Score> dB = new DBContext<Score>();
+
 
         public List<Score> Scores { get => scores; set => scores = value; }
-        public string Overlay { get => overlay; set => overlay = value; }
 
 
         public void AddScore(string user, int level, int points)

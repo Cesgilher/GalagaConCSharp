@@ -44,3 +44,13 @@ C:\Users\cehernando\Source\Repos\Cesgilher\GalagaConCSharp\obj\Debug\net7.0\refi
 C:\Users\cehernando\Source\Repos\Cesgilher\GalagaConCSharp\obj\Debug\net7.0\GalagaConC#.pdb
 C:\Users\cehernando\source\repos\Cesgilher\GalagaConCSharp\obj\Debug\net7.0\GalagaConC#.genruntimeconfig.cache
 C:\Users\cehernando\source\repos\Cesgilher\GalagaConCSharp\obj\Debug\net7.0\ref\GalagaConC#.dll
+C:\Users\cesgi\Source\Repos\Cesgilher\GalagaConCSharp\obj\Debug\net7.0\GalagaConC#.dll
+C:\Users\cesgi\Source\Repos\Cesgilher\GalagaConCSharp\obj\Debug\net7.0\refint\GalagaConC#.dll
+C:\Users\cesgi\Source\Repos\Cesgilher\GalagaConCSharp\obj\Debug\net7.0\GalagaConC#.pdb
+C:\Users\cesgi\Source\Repos\Cesgilher\GalagaConCSharp\bin\Debug\net7.0\GalagaConC#.exe
+C:\Users\cesgi\Source\Repos\Cesgilher\GalagaConCSharp\bin\Debug\net7.0\GalagaConC#.deps.json
+C:\Users\cesgi\Source\Repos\Cesgilher\GalagaConCSharp\bin\Debug\net7.0\GalagaConC#.runtimeconfig.json
+C:\Users\cesgi\Source\Repos\Cesgilher\GalagaConCSharp\bin\Debug\net7.0\GalagaConC#.dll
+C:\Users\cesgi\Source\Repos\Cesgilher\GalagaConCSharp\bin\Debug\net7.0\GalagaConC#.pdb
+C:\Users\cesgi\Source\Repos\Cesgilher\GalagaConCSharp\obj\Debug\net7.0\GalagaConC#.genruntimeconfig.cache
+C:\Users\cesgi\Source\Repos\Cesgilher\GalagaConCSharp\obj\Debug\net7.0\ref\GalagaConC#.dll
