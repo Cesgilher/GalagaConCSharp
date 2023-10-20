@@ -9,18 +9,23 @@ namespace GalagaConC_.Controller
 {
     public class Scoreboard
     {
-        private List<Score> scores = new List<Score>();
+        private List<Score> scores = new();
         private DBContext<Score> dB = new DBContext<Score>();
 
 
-        public List<Score> Scores { get => scores; set => scores = value; }
-
-
-        public void AddScore(string user, int level, int points)
+        public List<Score> GetScores()
         {
-            Score score = new Score(user, level, points);
-            Scores.Add(score);
+            scores = dB.GetAll();
+            return scores;
+        }
+        public void SafeToScoreFile()
+        {
+            dB.SaveAll(scores);
+        }
 
+        public void AddScore(Score score)
+        {
+            scores.Add(score);
         }
 
         public void ListScores()

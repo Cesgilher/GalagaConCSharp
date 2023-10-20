@@ -46,7 +46,7 @@ public class DBContext<T> where T : class
                         }
                         else if (typeof(T) == typeof(Score) && parts.Length == 3)
                         {
-                            T item = (T)Activator.CreateInstance(typeof(T), parts[0], int.Parse(parts[1]), parts[2]);
+                            T item = (T)Activator.CreateInstance(typeof(T), parts[0], int.Parse(parts[1]), int.Parse(parts[2]));
                             items.Add(item);
                         }
                         else

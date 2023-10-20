@@ -10,7 +10,7 @@ namespace GalagaConC_.Controller
 {
     public class UserManager
     {
-        private List<User> users = new List<User>();
+        private List<User> users;
         private DBContext<User> dB = new DBContext<User>();
 
 

@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GalagaConC_;
 using GalagaConC_.Controller;
 using GalagaConC_.Models;
 
@@ -25,7 +26,23 @@ public class Program
         uManager.Register(user6);
         uManager.SafeToUserFile();
 
-        
+        Scoreboard scoreboard = new Scoreboard();
+        scoreboard.GetType();
+        scoreboard.GetScores();
+        Score score = new("juan", 3, 1111);
+        Score score2 = new("juan2", 88, 1111);
+        Score score3 = new("juan3", 3, 2312321);
+        Score score4 = new("juan4", 6, 1111423421);
+        Score score5 = new("juan5", 4, 1111241234);
+        scoreboard.AddScore(score);
+        scoreboard.AddScore(score2);
+        scoreboard.AddScore(score3);
+        scoreboard.AddScore(score4);
+        scoreboard.AddScore(score5);
+        scoreboard.ListScores();
+        scoreboard.SafeToScoreFile();
+
+
 
     }
 
