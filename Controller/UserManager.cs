@@ -15,45 +15,7 @@ namespace GalagaConC_.Controller
 
         public List<User> GetUsers()
         {
-            if (File.Exists(path))
-            {
-                try
-                {
-                    using (StreamReader sr = File.OpenText(path))
-                    {
-                        string line;
-                        while ((line = sr.ReadLine()) != null)
-                        {
-                            string[] parts = line.Split(' ');
-
-                            if (parts.Length == 4)
-                            {
-                                User u = new User(parts[0], Convert.ToInt16(parts[1]), parts[2], parts[3]);
-                                users.Add(u);
-                            }
-                            else
-                            {
-                                Console.WriteLine($"Error en línea: {line}. Datos incompletos.");
-                            }
-                        }
-                    }
-
-                    return users;
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Error al leer el archivo: {ex.Message}");
-                    return null;
-                }
-
-            }
-            else
-            {
-                return null;
-            }
-
-
-
+            //DBContext.GetAll(User)
         }
         public void SafeToUserFile()
         {
