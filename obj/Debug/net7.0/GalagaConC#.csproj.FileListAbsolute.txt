@@ -30,3 +30,17 @@ C:\Users\cesgi\Source\Repos\Cesgilher\GalagaConCSharp\obj\Debug\net7.0\GalagaCon
 C:\Users\cesgi\Source\Repos\Cesgilher\GalagaConCSharp\obj\Debug\net7.0\GalagaConC#.AssemblyInfoInputs.cache
 C:\Users\cesgi\Source\Repos\Cesgilher\GalagaConCSharp\obj\Debug\net7.0\GalagaConC#.AssemblyInfo.cs
 C:\Users\cesgi\Source\Repos\Cesgilher\GalagaConCSharp\obj\Debug\net7.0\GalagaConC#.csproj.CoreCompileInputs.cache
+C:\Users\cehernando\Source\Repos\Cesgilher\GalagaConCSharp\obj\Debug\net7.0\GalagaConC#.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\cehernando\Source\Repos\Cesgilher\GalagaConCSharp\obj\Debug\net7.0\GalagaConC#.AssemblyInfoInputs.cache
+C:\Users\cehernando\Source\Repos\Cesgilher\GalagaConCSharp\obj\Debug\net7.0\GalagaConC#.AssemblyInfo.cs
+C:\Users\cehernando\Source\Repos\Cesgilher\GalagaConCSharp\obj\Debug\net7.0\GalagaConC#.csproj.CoreCompileInputs.cache
+C:\Users\cehernando\Source\Repos\Cesgilher\GalagaConCSharp\bin\Debug\net7.0\GalagaConC#.exe
+C:\Users\cehernando\source\repos\Cesgilher\GalagaConCSharp\bin\Debug\net7.0\GalagaConC#.deps.json
+C:\Users\cehernando\source\repos\Cesgilher\GalagaConCSharp\bin\Debug\net7.0\GalagaConC#.runtimeconfig.json
+C:\Users\cehernando\Source\Repos\Cesgilher\GalagaConCSharp\bin\Debug\net7.0\GalagaConC#.dll
+C:\Users\cehernando\Source\Repos\Cesgilher\GalagaConCSharp\bin\Debug\net7.0\GalagaConC#.pdb
+C:\Users\cehernando\Source\Repos\Cesgilher\GalagaConCSharp\obj\Debug\net7.0\GalagaConC#.dll
+C:\Users\cehernando\Source\Repos\Cesgilher\GalagaConCSharp\obj\Debug\net7.0\refint\GalagaConC#.dll
+C:\Users\cehernando\Source\Repos\Cesgilher\GalagaConCSharp\obj\Debug\net7.0\GalagaConC#.pdb
+C:\Users\cehernando\source\repos\Cesgilher\GalagaConCSharp\obj\Debug\net7.0\GalagaConC#.genruntimeconfig.cache
+C:\Users\cehernando\source\repos\Cesgilher\GalagaConCSharp\obj\Debug\net7.0\ref\GalagaConC#.dll

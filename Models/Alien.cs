@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GalagaConC_
+namespace GalagaConC_.Models
 {
     public class Alien : Ship
     {
@@ -14,12 +14,12 @@ namespace GalagaConC_
         { }
         public Alien(int id, object render, object hitbox, int[] position, Projectile projectile, int health = 1)
         {
-            this.Id = id;
-            this.Render = render;
-            this.Hitbox = hitbox;
-            this.Position = position;
-            this.Projectile = projectile;
-            this.Health= health;
+            Id = id;
+            Render = render;
+            Hitbox = hitbox;
+            Position = position;
+            Projectile = projectile;
+            Health = health;
 
 
 

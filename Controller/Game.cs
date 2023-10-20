@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GalagaConC_.Models;
 
-namespace GalagaConC_
+namespace GalagaConC_.Controller
 {
     public class Game
     {
@@ -25,7 +26,7 @@ namespace GalagaConC_
         public void Exit() { }
         public void AddScore() { }
         public void CheckLives() { }
-        public void SetLives() { } 
+        public void SetLives() { }
         public void SetBackground() { }
 
 

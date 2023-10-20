@@ -4,16 +4,17 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GalagaConC_.Models;
 
-namespace GalagaConC_
+namespace GalagaConC_.Controller
 {
     public class UserManager
     {
         List<User> users = new List<User>();
-        private string path = @"C:\Users\cehernando\Desktop\userTable.txt";
+        private string path = @"..\..\..\DB\\userTable.txt";
 
-        public List<User> ReadUserFile()
-        {             
+        public List<User> GetUsers()
+        {
             if (File.Exists(path))
             {
                 try
@@ -52,9 +53,9 @@ namespace GalagaConC_
             }
 
 
-            
+
         }
-        public void SafeToUserFile() 
+        public void SafeToUserFile()
         {
             if (!File.Exists(path))
             {
@@ -65,7 +66,7 @@ namespace GalagaConC_
             {
                 using (StreamWriter sw = new StreamWriter(path))
                 {
-                    
+
                     foreach (User user in users)
                     {
                         sw.WriteLine($"{user.Name} {user.PhoneNumber} {user.Email} {user.Password}");
@@ -89,9 +90,9 @@ namespace GalagaConC_
         public User Register(User user)
         {
             User session = null;
-            
+
             if (users != null)
-            { 
+            {
                 bool userExists = users.Any(u => u.Email == user.Email);
 
                 if (userExists)
@@ -106,14 +107,14 @@ namespace GalagaConC_
 
                 }
 
-                
+
             }
             return session;
 
 
         }
-        
-        public User EditUserField<T>(User session, T newValue, Func<User, T> getField, Action<User, T> setField, string errorMessage)
+
+        public User EditField<T>(User session, T newValue, Func<User, T> getField, Action<User, T> setField, string errorMessage)
         {
             bool fieldExists = users.Any(u => getField(u).Equals(newValue));
 
@@ -138,17 +139,17 @@ namespace GalagaConC_
 
         public User EditName(User session, string newName)
         {
-            return EditUserField(session, newName, u => u.Name, (u, value) => u.Name = value, "Ese nombre de usuario no está disponible");
+            return EditField(session, newName, u => u.Name, (u, value) => u.Name = value, "Ese nombre de usuario no está disponible");
         }
 
         public User EditPhone(User session, int newPhone)
         {
-            return EditUserField(session, newPhone, u => u.PhoneNumber, (u, value) => u.PhoneNumber = value, "Ese número ya está asignado a otra cuenta");
+            return EditField(session, newPhone, u => u.PhoneNumber, (u, value) => u.PhoneNumber = value, "Ese número ya está asignado a otra cuenta");
         }
 
         public User EditPassword(User session, string newPassword)
         {
-            return EditUserField(session, newPassword, u => u.Password, (u, value) => u.Password = value, "Esa contraseña es idéntica a la actual");
+            return EditField(session, newPassword, u => u.Password, (u, value) => u.Password = value, "Esa contraseña es idéntica a la actual");
         }
 
         public User LogIn(User user)
@@ -158,7 +159,7 @@ namespace GalagaConC_
             {
                 for (int i = 0; i < users.Count; i++)
                 {
-                    if (user.Email== users[i].Email && user.Password == users[i].Password)
+                    if (user.Email == users[i].Email && user.Password == users[i].Password)
                     {
                         session = users[i];
                         Console.WriteLine("Se ha iniciado sesion correctamente");
@@ -169,21 +170,21 @@ namespace GalagaConC_
                         Console.WriteLine("Contraseña incorrecta");
 
                     }
-                    
+
 
                 }
             }
             return session;
         }
-        public User LogOut(User session) 
+        public User LogOut(User session)
         {
             session = null;
             return session;
         }
-        public User Delete(User session) 
+        public User Delete(User session)
         {
 
-            if (users != null) 
+            if (users != null)
             {
                 for (int i = 0; i < users.Count; i++)
                 {
@@ -193,7 +194,7 @@ namespace GalagaConC_
                         session = null;
                         break;
                     }
-                    
+
 
                 }
             }

@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GalagaConC_.Models;
 
-namespace GalagaConC_
+namespace GalagaConC_.Controller
 {
-    public class Board
+    public class Board //La matriz con las naves
     {
         private int id;
         private List<Alien> aliens = new List<Alien>();

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GalagaConC_
+namespace GalagaConC_.Models
 {
     public class User
     {
@@ -18,7 +18,7 @@ namespace GalagaConC_
         public User(string name, int phoneNumbre, string email, string password)
         {
             this.name = name;
-            this.phoneNumber = phoneNumbre;
+            phoneNumber = phoneNumbre;
             this.email = email;
             this.password = password;
         }
@@ -33,6 +33,6 @@ namespace GalagaConC_
         public string Email { get => email; set => email = value; }
         public string Password { get => password; set => password = value; }
 
-        
+
     }
 }
