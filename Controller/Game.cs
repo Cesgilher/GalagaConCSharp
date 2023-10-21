@@ -24,7 +24,7 @@ namespace GalagaConC_.Controller
         public void Stop() { }
         public void Resume() { }
         public void Exit() { }
-        public void AddScore() { }
+        public void SaveScore() { }
         public void CheckLives() { }
         public void SetLives() { }
         public void SetBackground() { }

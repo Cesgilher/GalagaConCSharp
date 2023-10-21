@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Models"
   ],
-  "SelectedNode": "\\GalagaConC#.sln",
+  "SelectedNode": "\\Models\\DBContext.cs",
   "PreviewInSolutionExplorer": false
 }

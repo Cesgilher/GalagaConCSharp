@@ -33,7 +33,7 @@ public class Program
         Score score2 = new("juan2", 88, 1111);
         Score score3 = new("juan3", 3, 2312321);
         Score score4 = new("juan4", 6, 1111423421);
-        Score score5 = new("juan5", 4, 1111241234);
+        Score score5 = new("juan5", 4, 1111241235);
         scoreboard.AddScore(score);
         scoreboard.AddScore(score2);
         scoreboard.AddScore(score3);

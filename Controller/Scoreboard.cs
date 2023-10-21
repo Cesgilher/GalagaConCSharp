@@ -25,7 +25,15 @@ namespace GalagaConC_.Controller
 
         public void AddScore(Score score)
         {
-            scores.Add(score);
+            bool allPointsLower = scores
+                .Where(s => s.User == score.User)
+                .All(s => s.Points < score.Points);
+
+            if (allPointsLower)
+            {
+                scores.Add(score);
+            }
+
         }
 
         public void ListScores()
